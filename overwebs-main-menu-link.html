@@ -1,0 +1,102 @@
+<link rel="import" href="./custom-html-element.html">
+<link rel="import" href="../overwebs-fonts/overwebs-fonts.html">
+
+<template id="overwebs-main-menu-link-template">
+  <span id="span"><slot></slot></span>
+  <style>
+    :host {
+      display: block;
+    }
+    span {
+      font-family: 'overwebs-big-noodle', sans-serif;
+      display: block;
+      text-decoration: none;
+      padding-left: calc(var(--overwebs-menu-size, 75px) / 3 * 2);
+      margin-top: calc(var(--overwebs-menu-size, 75px) * 0.1);
+      position: relative;
+      z-index: 0;
+      color: white;
+      line-height: 1;
+      font-size: var(--overwebs-menu-size, 75px);
+      cursor: inherit;
+    }
+    span::before {
+      position: absolute;
+      content: attr(content);
+      position: absolute;
+      z-index: -1;
+      color: rgba(255,255,255,0);
+      -webkit-text-stroke: calc(var(--overwebs-menu-size, 75px) * 0.05) rgba(0,0,0,.15);
+    }
+
+    :host([sublink]) span {
+      margin-top: calc(var(--overwebs-menu-size, 75px) * 0.13);
+      padding-left: calc(var(--overwebs-menu-size, 75px) / 3 * 2);
+      color: rgba(255,255,255,0.95);
+      font-family: 'overwebs-futura', sans-serif;
+      font-size: calc(var(--overwebs-menu-size, 75px) * 0.37);
+      text-transform: uppercase;
+    }
+    :host([sublink]) span::before {
+      color: rgba(0,0,0,0);
+      position: absolute;
+      white-space:nowrap;
+      content: attr(content);
+      position: absolute;
+      z-index: -1;
+      -webkit-text-stroke: calc(var(--overwebs-menu-size, 75px) * 0.03) rgba(154,166,195,.8);
+    }
+    :host([sublink]) span:hover {
+      padding-left: calc(var(--overwebs-menu-size, 75px) * 1.04);
+      transform: scale(1.1);
+    }
+
+
+    :not(.disabled):hover {
+      padding-left: calc(var(--overwebs-menu-size, 75px) * 1.14);
+      transform: scale(1.1);
+    }
+    :host(.disabled) {
+      color: rgba(255,255,255,0.6);
+    }
+  </style>
+</template>
+
+<script>
+{
+  let doc;
+  if (document._currentScript) {
+    doc = document._currentScript.ownerDocument;
+  } else {
+    doc = document.currentScript.ownerDocument;
+  }
+
+  class OverwebsMainMenuLink extends CustomHTMLElement {
+    static get _document() {
+      return doc;
+    }
+    static get is() { return 'overwebs-main-menu-link' }
+    static get observedAttributes() {
+      return ['text']
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+      if (name === 'text') {
+        this.text = newValue;
+      }
+    }
+
+    set text(value) {
+      console.log(value)
+      this._text = value;
+      this.$.span.setAttribute("content", value);
+    }
+
+    get text() {
+      return this._text;
+    }
+  }
+
+  customElements.define(OverwebsMainMenuLink.is, OverwebsMainMenuLink)
+}
+</script>

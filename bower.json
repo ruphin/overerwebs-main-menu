@@ -1,0 +1,27 @@
+{
+  "name": "overwebs-main-menu",
+  "description": "A simple component to recreate the overwatch main menu",
+  "main": [
+    "overwebs-main-menu.html",
+    "overwebs-main-menu-link.html"
+  ],
+  "authors": [
+    "Goffert van Gool <ruphin@ruphin.net>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "web-components"
+  ],
+  "homepage": "https://github.com/ruphin/overwebs-main-menu",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "devDependencies": {
+    "webcomponentsjs": "git://github.com/webcomponents/webcomponentsjs.git#1.0.0-rc.11"
+  },
+  "dependencies": {
+    "overwebs-fonts": "*"
+  }
+}

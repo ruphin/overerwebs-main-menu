@@ -1,0 +1,36 @@
+<link rel="import" href="./custom-html-element.html">
+
+<template id="overwebs-main-menu-template">
+  <slot></slot>
+  <style>
+    :host {
+      display: flex;
+      flex-direction: column;
+    }
+    ::slotted(a) {
+      color: unset;
+      text-decoration: none;
+    }
+  </style>
+</template>
+
+<script>
+{
+  let doc;
+  if (document._currentScript) {
+    doc = document._currentScript.ownerDocument;
+  } else {
+    doc = document.currentScript.ownerDocument;
+  }
+
+  class OverwebsMainMenu extends CustomHTMLElement {
+    static get _document() {
+      return doc;
+    }
+
+    static get is() { return 'overwebs-main-menu' }
+  }
+
+  customElements.define(OverwebsMainMenu.is, OverwebsMainMenu)
+}
+</script>
