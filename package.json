@@ -23,5 +23,6 @@
     "build": "gulp",
     "dev": "gulp serve",
     "publish": "git add overwebs-main-menu.js"
-  }
+  },
+  "version": "0.0.1"
 }
