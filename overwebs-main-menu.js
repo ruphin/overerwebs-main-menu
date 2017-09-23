@@ -18,7 +18,6 @@ import{GluonElement,html}from'../gluonjs/gluon.js';import'../overwebs-fonts/over
     color: rgba(255,255,255,0);
     -webkit-text-stroke: calc(var(--overwebs-menu-size, 75px) * 0.05) rgba(0,0,0,.15);
   }
-
   a.${scopedClass}-submenu {
     padding-left: calc(var(--overwebs-menu-size, 75px) / 3 * 2);
     color: rgba(255,255,255,0.95);
@@ -30,7 +29,7 @@ import{GluonElement,html}from'../gluonjs/gluon.js';import'../overwebs-fonts/over
   a.${scopedClass}-submenu::before {
     color: rgba(0,0,0,0);
     position: absolute;
-    white-space:nowrap;
+    white-space: nowrap;
     content: attr(content);
     position: absolute;
     z-index: -1;
@@ -59,4 +58,4 @@ import{GluonElement,html}from'../gluonjs/gluon.js';import'../overwebs-fonts/over
     }
     </style>
     <slot id="slot"></slot>
-    `}constructor(){super(),this.parentNode.firstChild!==style&&this.parentNode.prepend(style)}connectedCallback(){super.connectedCallback(),this.$.slot.addEventListener('slotchange',()=>{this.$.slot.assignedNodes().filter((a)=>'A'===a.tagName).forEach((a)=>{a.classList.add(scopedClass),this.hasAttribute('submenu')&&a.classList.add(`${scopedClass}-submenu`),a.setAttribute('content',a.innerText)})})}}customElements.define(OverwebsMainMenu.is,OverwebsMainMenu);
+    `}connectedCallback(){super.connectedCallback(),this.parentNode.firstChild!==style&&this.parentNode.prepend(style),this.$.slot.addEventListener('slotchange',()=>{this.$.slot.assignedNodes().filter((a)=>'A'===a.tagName).forEach((a)=>{a.classList.add(scopedClass),this.hasAttribute('submenu')&&a.classList.add(`${scopedClass}-submenu`),a.setAttribute('content',a.innerText)})})}}customElements.define(OverwebsMainMenu.is,OverwebsMainMenu);
