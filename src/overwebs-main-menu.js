@@ -23,7 +23,6 @@ style.innerText = `a.${scopedClass} {
     color: rgba(255,255,255,0);
     -webkit-text-stroke: calc(var(--overwebs-menu-size, 75px) * 0.05) rgba(0,0,0,.15);
   }
-
   a.${scopedClass}-submenu {
     padding-left: calc(var(--overwebs-menu-size, 75px) / 3 * 2);
     color: rgba(255,255,255,0.95);
@@ -35,7 +34,7 @@ style.innerText = `a.${scopedClass} {
   a.${scopedClass}-submenu::before {
     color: rgba(0,0,0,0);
     position: absolute;
-    white-space:nowrap;
+    white-space: nowrap;
     content: attr(content);
     position: absolute;
     z-index: -1;
@@ -76,15 +75,11 @@ class OverwebsMainMenu extends GluonElement {
     `;
   }
 
-  constructor() {
-    super();
+  connectedCallback() {
+    super.connectedCallback();
     if (this.parentNode.firstChild !== style) {
       this.parentNode.prepend(style);
     }
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
     this.$.slot.addEventListener('slotchange', () => {
       this.$.slot
         .assignedNodes()
