@@ -2,10 +2,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-<script src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
-
-<link rel="import" href="/overwebs-main-menu.html">
-<link rel="import" href="/overwebs-main-menu-link.html">
+<script type="module" src="src/overwebs-main-menu.js"></script>
 
 <style>
   body {
@@ -22,15 +19,11 @@
     -webkit-user-select: none;
     -o-user-select: none;
     -ms-user-select: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 
-  overwebs-main-menu {
-    width: 500px;
-  }
-  
-  :root {
-    --overwebs-menu-size: calc(100 / 25.6 * 1vw);
+   :root {
+    --overwebs-window-size: 100vw;
   }
 </style>
 
@@ -39,12 +32,26 @@
 <!-- endbuild -->
 
 <overwebs-main-menu>
-  <a href="/loot"><overwebs-main-menu-link text="First Line">First Line</overwebs-main-menu-link></a>
-  <a href="/loot"><overwebs-main-menu-link text="Second Line">Second Line</overwebs-main-menu-link></a>
-  <a href="/loot"><overwebs-main-menu-link text="Third Line">Third Line</overwebs-main-menu-link></a>
+  <a href="test">Play</a>
+  <a href="test">Training</a>
+  <a href="test">Hero Gallery</a>
+  <a href="test">Loot Box</a>
 </overwebs-main-menu>
 
 <overwebs-main-menu submenu>
-  <a href="/loot"><overwebs-main-menu-link sublink text="First Line">First Line</overwebs-main-menu-link></a>
-  <a href="/loot"><overwebs-main-menu-link sublink text="Second Line">Second Line</overwebs-main-menu-link></a>
-  <a href="/loot"><overwebs-main-menu-link sublink text="Third Line">Third Line</overwebs-main-menu-link></a>
+  <a href="test">Social</a>
+  <a href="test">Career Profile</a>
+  <a href="test">Options</a>
+  <a href="test">Exit Game</a>
+</overwebs-main-menu>
+<script>
+  // This would be how to configure the asset path for modules.
+  window.modulesAssetPath = function (module) {
+    if (module === 'overwebs-player-widget') {
+      return '';
+    } else {
+      return `node_modules/${module}`;
+    }
+  }
+
+</script>
